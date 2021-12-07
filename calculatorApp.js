@@ -9,6 +9,12 @@ const handleRequest = (request) => {
     const number1 = Number(params.get('number1'));
     const number2 = Number(params.get('number2'));
 
+
+    if (url.pathname === "/jouni"){
+        return new Response("Indeed you are the man");
+    }
+
+
     if (oper === 'sum') {
         console.log('sum');
         ret = number1 + number2;
@@ -25,5 +31,12 @@ const handleRequest = (request) => {
     }
     return new Response(`${ret}`);
 };
+
+let port = 7777;
+if (Deno.args.length > 0) {
+  const lastArgument = Deno.args[Deno.args.length - 1];
+  port = Number(lastArgument);
+}
+
 
 listenAndServe(`:${port}`, handleRequest);
