@@ -1,0 +1,1 @@
+web: deno run --allow-net calculatorApp.js ${PORT}
